@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+          <div class="Background">
+            <img src="images/background.jpg" alt="Background Image" class="header-image">
+        </div>
+    </body>
+</html>
