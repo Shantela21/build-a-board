@@ -121,21 +121,6 @@ build-a-board/
 - Semantic HTML structure
 - Efficient CSS and JavaScript
 
-## 🌟 Additional Features
 
-- Loading animation on startup
-- Notification system for BIOS interactions
-- Responsive design for all screen sizes
-- Accessibility compliance (WCAG 2.1)
-- Component hover animations
-- Modal backdrop blur effects
+**Created by:** Shantela Noyila  
 
-## 📤 Submission
-
-Ready for GitHub submission and grading. All requirements from the assignment have been met and exceeded with additional features for enhanced user experience.
-
----
-
-**Created by:** [Your Name]  
-**Date:** January 5, 2026  
-**Module:** Module 1 - Learner Guide (Pages 80-126)
