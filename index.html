@@ -1,24 +1,102 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div id="topbutton">
-        <a href="bios.html"><button>BIOS</button></a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build-A-Board: Interactive Computer Anatomy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Toggle Button -->
+    <div id="toggle-container">
+        <button id="toggle-btn">Switch to BIOS</button>
+    </div>
+
+    <!-- Motherboard View -->
+    <div id="motherboard-view" class="view active">
+        <h1>Motherboard</h1>
+        <div id="motherboard-container">
+            <!-- CPU (Center) -->
+            <div class="component" id="cpu" data-component="cpu">
+                <img src="images/CPU-removebg-preview.png" alt="CPU">
+                <span>CPU</span>
+            </div>
+
+            <!-- RAM Slots (Right side) -->
+            <div class="component" id="ram" data-component="ram">
+                <img src="images/RAM-removebg-preview.png" alt="RAM">
+                <span>RAM</span>
+            </div>
+
+            <!-- ROM (Top left) -->
+            <div class="component" id="rom" data-component="rom">
+                <img src="images/ROM-removebg-preview.png" alt="ROM">
+                <span>ROM</span>
+            </div>
+
+            <!-- CMOS (Bottom left) -->
+            <div class="component" id="cmos" data-component="cmos">
+                <img src="images/CMOS-removebg-preview.png" alt="CMOS">
+                <span>CMOS</span>
+            </div>
+
+            <!-- Storage Drive (Bottom) -->
+            <div class="component" id="storage" data-component="storage">
+                <img src="images/storage_drive-removebg-preview.png" alt="Storage Drive">
+                <span>Storage Drive</span>
+            </div>
+
+            <!-- Power Unit (Left side) -->
+            <div class="component" id="power" data-component="power">
+                <img src="images/power_unit-removebg-preview.png" alt="Power Unit">
+                <span>Power Unit</span>
+            </div>
         </div>
+    </div>
 
-        <div class="Background">
-            <img src="images/background.jpg" alt="Background Image" class="header-image">
-            <a class="info-box" href="cpu.html">
+    <!-- BIOS View -->
+    <div id="bios-view" class="view">
+        <div id="bios-container">
+            <div id="bios-header">
+                <h2>BIOS Setup Utility</h2>
+                <div id="bios-info">
+                    <span>Mainboard: AMI BIOS v2.1.3</span>
+                    <span>Build Date: 01/05/2026</span>
+                </div>
+            </div>
+            <pre id="bios-screen">
+╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                                    ║
+║                                    AMERICAN MEGATRENDS BIOS                                       ║
+║                                                                                                    ║
+║   Main Menu                                                                                       ║
+║   ─────────────────────────────────────────────────────────────────────────────────────────────   ║
+║                                                                                                    ║
+║   • Boot Order          [Hard Drive] → [USB] → [Network]                                          ║
+║   • Security            Password Protection: [Disabled]                                            ║
+║   • CMOS Clock          01/05/2026 14:30:00                                                       ║
+║   • BIOS Version        v2.1.3                                                                     ║
+║   • Advanced Settings   [Enter]                                                                   ║
+║                                                                                                    ║
+║   ─────────────────────────────────────────────────────────────────────────────────────────────   ║
+║                                                                                                    ║
+║   ESC: Exit          F10: Save and Exit          ↑↓: Navigate          Enter: Select               ║
+║                                                                                                    ║
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+            </pre>
         </div>
+    </div>
 
-
-        <h1>MOTHERBOARD</h1>
-
-        <div id="ROM">
-            <img src="images/ROM-removebg-preview.png">
+    <!-- Modal for Component Explanations -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <img id="modal-image" src="" alt="">
+            <p id="modal-description"></p>
         </div>
-        <div id="Background"
-    </body>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>

@@ -1,3 +1,332 @@
-body {
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Toggle Button */
+#toggle-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#toggle-btn {
+    background: #ff6b35;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#toggle-btn:hover {
+    background: #ff8c5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* View System */
+.view {
+    display: none !important;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.view.active {
+    display: block !important;
+}
+
+/* BIOS View - Ensure it's completely hidden when not active */
+#bios-view:not(.active) {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+/* Motherboard View */
+#motherboard-view h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#motherboard-container {
+    background: #2d4a2b;
+    border-radius: 15px;
+    padding: 40px;
+    min-height: 600px;
+    position: relative;
+    border: 3px solid #1a2f1a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255, 255, 255, 0.02) 20px, rgba(255, 255, 255, 0.02) 21px),
+        repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255, 255, 255, 0.02) 20px, rgba(255, 255, 255, 0.02) 21px);
+}
+
+/* Component Styles */
+.component {
+    position: absolute;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.component:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.component img {
+    max-width: 80px;
+    max-height: 80px;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.component span {
+    display: block;
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Component Positions */
+#cpu {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#cpu:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+#ram {
+    top: 30%;
+    right: 10%;
+}
+
+#rom {
+    top: 10%;
+    left: 10%;
+}
+
+#cmos {
+    bottom: 20%;
+    left: 15%;
+}
+
+#storage {
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#storage:hover {
+    transform: translateX(-50%) scale(1.1);
+}
+
+#power {
+    top: 40%;
+    left: 5%;
+}
+
+/* BIOS View */
+#bios-view {
+    background: #000033;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', monospace;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+#bios-container {
+    background: #000066;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+    width: 100%;
+    max-width: 1000px;
+}
+
+#bios-header {
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+#bios-header h2 {
+    color: #00ff00;
+    font-size: 28px;
+    margin: 0 0 15px 0;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+#bios-info {
+    display: flex;
+    justify-content: space-between;
+    color: #00cc00;
+    font-size: 16px;
+    font-family: 'Courier New', monospace;
+    padding: 0 20px;
+}
+
+#bios-info span {
+    color: #00ff00;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+#bios-screen {
+    color: #00ff00;
+    font-size: 16px;
+    line-height: 1.4;
+    white-space: pre;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    overflow-x: auto;
+    padding: 10px;
+}
+
+/* Modal System */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    margin: 10% auto;
+    padding: 30px;
+    border: none;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.3s ease;
+    color: white;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+#modal-title {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 2em;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#modal-image {
+    display: block;
+    margin: 20px auto;
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#modal-description {
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+    margin-top: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #motherboard-container {
+        padding: 20px;
+        min-height: 500px;
+    }
+    
+    .component img {
+        max-width: 60px;
+        max-height: 60px;
+    }
+    
+    .component span {
+        font-size: 12px;
+    }
+    
+    #bios-screen {
+        font-size: 12px;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+        padding: 20px;
+    }
+    
+    #toggle-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 }
